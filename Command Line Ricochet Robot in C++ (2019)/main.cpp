@@ -1,8 +1,3 @@
-/* Qing Zhang
- * Comp 15
- * Proj 1
- * main.cpp
- */
 
 #include <iostream>
 #include <fstream>
