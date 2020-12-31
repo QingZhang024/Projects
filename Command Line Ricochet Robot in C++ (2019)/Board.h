@@ -1,10 +1,3 @@
-/* Qing Zhang
- * Comp 15
- * Proj 1
- * Board.h
- */
-
-
 #ifndef _BOARD_H_
 #define _BOARD_H_
 
