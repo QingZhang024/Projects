@@ -1,0 +1,37 @@
+Compile/run:
+    - Compile using
+        make gorobots
+    - run executable with
+        ./gorobots boardFile
+
+Files: 
+    main.cpp:
+        Contains the client codes, take in information by command and use the
+        Board and Tree classes to run the game.
+    Board.cpp:
+        Contains the function definition of the Board class. Example of 
+        functions: Print, Set_Robot, etc.
+    Board.h:
+        Interface of the Board class. Contains the function declaration 
+        of the functions in Board.cpp. 
+    Tree.cpp:
+        Contains the function definition of the Tree class. Example of 
+        functions: Move_North, North_Auto, etc.
+    Tree.h:
+        Interface of the Tree class. Contains the function declaration
+        of the functions in Board.cpp.
+    test.cpp:
+        Testing file for the project. 
+    MAKEFILE:
+        Makes gorobots and test. 
+
+Data Structures:
+    2-D Char Array:
+        The board of the game is represented by a 2-D char array that store
+        the walls in the array also. 
+    Tree: 
+        The tree class contains a tree of Nodes. The starting location of 
+        the robot is inputted into the front node, and every direction the
+        robot moves to will be a child of the previous node. 
+        The struct of the Node contains the row and col int, a string with
+        path to that node, and four Node pointers representing each direction.
