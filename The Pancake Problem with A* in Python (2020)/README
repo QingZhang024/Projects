@@ -1,0 +1,31 @@
+Find the set of flips that is the shortestto turn an 
+unordered stack of pancakes to an ordered stack from small to large. 
+
+To Run: Type A for auto mode that generate a random stack of 10 pancakes, 
+        or type M to enter any number of pancakes and custom values. 
+        Note: Repeated values should not be entered 
+              and may cause infinite searching. 
+
+Design and Assumptions:
+
+    - The pancake stack is implemented with the beginning of the list
+      representing the top of the pancake stack, so a goal stack look like:
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      From Top -> Bottom
+
+    - The plate is added to the stack like how the page about Heuristic did. 
+      The plate is represented as the number of pancakes + 1 at the 
+      bottom of the stack, and is unchanged no matter how you flip it
+      However, the plate is hidden to the user. 
+
+    - A heap queue is used to represent the queue for the A* search, because
+      it is a fast priority queue. 
+
+    - The main algorithm is the A* algorithm. Each possible flip position is 
+      tested for goal and if not goal, it's added to a priority queue, and
+      the visited list. The priority queue has a loop that pops out the state 
+      with the smallest total backward cost and Heuristic value, 
+      and is each compared to the goal. If it is not the goal, each possible flip
+      position is also tested and added to the queue if they are not already visited. 
+
+    - The program accept any number of pancakes. 
