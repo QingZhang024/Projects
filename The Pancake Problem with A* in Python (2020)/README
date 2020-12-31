@@ -1,5 +1,11 @@
-Find the set of flips that is the shortestto turn an 
-unordered stack of pancakes to an ordered stack from small to large. 
+Search Problem:   Find the set of flips that is the shortest
+                  to turn an unordered stack of pancakes to ordered stack from small to large. 
+
+Backward Cost:    Number of flips so far
+
+Forward Cost:     The Gap Heuristic, how many pancakes have a correct neighbor
+                  h(s):= |{i|i ∊ {1, ..., n}, |s(i) -s(s+1)| > 1}
+
 
 To Run: Type A for auto mode that generate a random stack of 10 pancakes, 
         or type M to enter any number of pancakes and custom values. 
