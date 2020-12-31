@@ -1,9 +1,3 @@
-/* Qing Zhang
- * Comp 15
- * Proj 1
- * Tree.h
- */
-
 
 #ifndef _TREE_H_
 #define _TREE_H_
