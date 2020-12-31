@@ -1,0 +1,15 @@
+Goal: Fill the backpack to make it as valuable as possible without exceeding the maximum weight. 
+
+Genome: An index representation of backpacks. 
+        For example, a backpack of only box #1 is represented as [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+Fringe Operations:
+        - Mutation: Choose a random index in genome, if the corresponding box is in the set, 
+                    take it away, if not in set, put it in. 
+        - Crossover: Choose a random index in genome. Produce two child given two parents.
+                     One child take first part of first parent and second part of second part, second child is the opposite. 
+
+
+- For each new generation, the population is culled by 50%
+- Then crossover and mutation is applied. 
+- The genetic algorithm ends when there is only one genome left. 
