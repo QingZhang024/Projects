@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <vector>
 
-#include "random_selection.h"
+#include "randSelect.h"
 
 
 void printVector(std::vector<int> v) {
