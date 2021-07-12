@@ -1,0 +1,76 @@
+ * README
+ * 
+ * Qing Zhang
+ * Comp 15
+ * Proj 2
+
+
+ * Program Purpose:
+        Utalize Hashing and make a simpler version of Grep.
+
+ * Files:
+    Index.h: Contains the function declaration of Index class.
+    Index.cpp: Contains the function definition of Index class. 
+               Examples: Gerp, indexWords, hashingWords
+    FSTree.h: Not written by me, ontains the FSTree function declarations.
+    FSTree.o: Compiled FSTree class. 
+    DirNode.h: Not written by me, contains the DirNode function declarations.
+    DirNode.o: Compiled DirNode class.
+    FSTreeTraversal.cpp: Prints the path of all files under a directory. 
+    stringProcessing.cpp: Strips the Beginning and end non-Alphanumaric digits.
+    stringProcessing.h: Function declaration of the stringProcessing.cpp. 
+
+ * Architectural Overview:
+    The Index class accesses files to index with FSTree which contains DirNodes,
+    and processes each word in the files and index them with hash function. 
+
+ * Data Structures and algorithms:
+    The main structure I used for my program is vector. The Index class 
+    contains two main vectors, one vector of all lines in the files, and 
+    another for the hashed words. They are all vectors of structs I made which 
+    stores some additional info like path and line numbers. 
+    I also used stack to organize the files and help with extracting lines from
+    the files. 
+    First a FSTree is created with the directory given by user, then go through
+    the Tree and put each DirNode into the stack. Then I go through the stack 
+    by popping the top, which means the leaves of the FSTree are accessed first.   
+    Each file is opened and each line in the file is thrown into the line
+    vector, the vector stores the line as a string, the path as a string and
+    the line number in the file as an int. Then the files will never be needed
+    to open again. 
+    Then the line vector is put in a for loop to hash all the words in the line.
+    The words are turned into all lowercase and that root words is what gets 
+    hashed with STL functional's hash function and linear probing for any 
+    repeation. Each variation of the same word is stored as a vector under each 
+    root word. The subwords also contains a vector of int that represents the 
+    location of the line in the lineIndex.
+
+ * Testing:
+    When every function is written I tested whether or not they worked by using
+    them. Then after all the parts have been assembled, I tested the program 
+    mainly by comparing to the reference implementation.
+    At first, running the program takes a long time, especially with 
+    largeGutenberg, it got so slow that I never saw it finish querying. I put
+    a cerr in every function to try to find why it was taking so long. I found
+    that even though it was not the biggest reason why my program was slow but 
+    expanding the hash table was taking a considerable time. Originally, 
+    the expand function will go through the line Index again and hash every
+    word again, but since it's only the root word that get hashed in my case, I 
+    changed the expand so that it go through the current hash table and 
+    reindex all the existing root words and put them into the new vector. I did
+    this because I think in most cases, there will be less root word hash table
+    slots than actual words in the files, so it would take much less time this
+    way. 
+    Then, through a long time of staring at my codes, I found the biggest
+    reason why it was slow. To prevent repeated words on the same line being
+    stored twice, I checked through the whole line Index vector under each 
+    sub-word to find if the line has appeared before. That was obviously dumb 
+    since I index in the order of each line, so it can be done a lot simpler. 
+    I added a vector to the linetoword function so that while parsing each 
+    line, I add the word to the vector, if a word was already in the vector, 
+    I will not hash it. After taking away the checking line vector, the program
+    now runs a lot faster, not too much longer than the reference. 
+    
+
+    
+ 
