@@ -1,0 +1,6 @@
+For PNM(PPM/PGM/PBM) Image Files. 
+
+Removes any continuous blocks of black pixels that touch the edge of a PNM file.
+
+PNM files are simple and each pixel is a set size depending on the specific file type. 
+There is no compression and it is easy to test against. 
